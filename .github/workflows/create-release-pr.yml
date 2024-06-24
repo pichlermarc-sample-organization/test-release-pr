@@ -44,6 +44,7 @@ jobs:
           npm run github:create_release_pr
         env:
           #GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_SCOPE: ${{ github.event.inputs.release_scope }}
           RELEASE_KIND: ${{ github.event.inputs.release_scope }}:${{ github.event.inputs.release_type }}
           RELEASE_PR_REMOTE: opentelemetrybot
