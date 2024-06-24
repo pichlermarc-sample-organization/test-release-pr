@@ -68,7 +68,7 @@
     "_verify_release_remote": "git remote get-url $RELEASE_PR_REMOTE",
     "_github:update_release_branch": "npm run _verify_release_kind && npm run _verify_release_remote && (git checkout main && git pull upstream main && git branch -D release/next-version; git checkout -b release/next-version && npm run prepare_release:$RELEASE_KIND && git commit -am \"chore: prepare release\" && git push $RELEASE_PR_REMOTE --force release/next-version)",
     "github:update_release_pr": "npm run _github:update_release_branch && npm run _github:update_release_pr_body:$RELEASE_SCOPE",
-    "github:create_release_pr": "npm run _github:update_release_branch && gh pr create $RELEASE_PR_OWNER:release/next-version --title 'chore: prepare next release' --body '' && npm run _github:update_release_pr_body:$RELEASE_SCOPE"
+    "github:create_release_pr": "npm run _github:update_release_branch && gh pr create --title 'chore: prepare next release' --body '' && npm run _github:update_release_pr_body:$RELEASE_SCOPE"
   },
   "repository": "open-telemetry/opentelemetry-js",
   "keywords": [
