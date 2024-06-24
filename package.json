@@ -66,9 +66,9 @@
     "_github:update_release_pr_body:experimental": "node scripts/extract-latest-release-notes.js experimental/CHANGELOG.md && npm run _github:update_release_pr_body_from_file",
     "_verify_release_kind": "echo $RELEASE_KIND | grep -oP '^(all|sdk|experimental):(minor|patch)$'",
     "_verify_release_remote": "git remote get-url $RELEASE_PR_REMOTE",
-    "_github:update_release_branch": "npm run _verify_release_kind && npm run _verify_release_remote && (git checkout main && git pull upstream main && git branch -D release/next-version; git checkout -b release/next-version && npm run prepare_release:$RELEASE_KIND && git commit -am \"chore: prepare release\" && git push $RELEASE_PR_REMOTE --force release/next-version)",
+    "_github:update_release_branch": "npm run _verify_release_kind && npm run _verify_release_remote && (git checkout main && git pull upstream main && git branch -D release/next-version; git checkout -b release/next-version && npm run prepare_release:$RELEASE_KIND && git commit -am \"chore: prepare release\" && git push --set-upstream $RELEASE_PR_REMOTE --force release/next-version)",
     "github:update_release_pr": "npm run _github:update_release_branch && npm run _github:update_release_pr_body:$RELEASE_SCOPE",
-    "github:create_release_pr": "npm run _github:update_release_branch && gh pr create --title 'chore: prepare next release' --body '' && npm run _github:update_release_pr_body:$RELEASE_SCOPE"
+    "github:create_release_pr": "npm run _github:update_release_branch && gh pr create --repo pichlermarc-sample-organization/test-release-pr --title 'chore: prepare next release' --body ''\n && npm run _github:update_release_pr_body:$RELEASE_SCOPE"
   },
   "repository": "open-telemetry/opentelemetry-js",
   "keywords": [
