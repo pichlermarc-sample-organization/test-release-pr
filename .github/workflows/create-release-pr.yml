@@ -1,4 +1,4 @@
-name: Create Release
+name: Create or Update Release PR
 
 on:
   workflow_dispatch:
@@ -56,11 +56,11 @@ jobs:
 #        env:
 #          GH_TOKEN: ${{ github.token }}
 #          RELEASE_PR_OWNER: marcpichler # opentelemetrybot
-      - name: Create PR
+      - name: Create/Update Release PR
         run: |
           git config user.name opentelemetrybot
           git config user.email 107717825+opentelemetrybot@users.noreply.github.com
-          npm run github:create_release_pr
+          npm run github:create_or_update_release_pr
         # if: ${{ steps.determine-pr-status.outputs.pr-missing == 1 }}
         env:
           GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
