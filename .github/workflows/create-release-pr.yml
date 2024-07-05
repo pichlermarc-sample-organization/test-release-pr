@@ -47,11 +47,18 @@ jobs:
         run: npm ci
       - name: Build 🔧
         run: npm run compile
+      - name: Determine PR Status
+        id: determine-pr-status
+      # later open-telemetry/opentelemetry-js
+        run: |
+          gh pr view --repo pichlermarc-sample-organization/test-release-pr $RELEASE_PR_OWNER:release/next-version2 || EXIT_CODE=$?
+          echo "pr-missing=$EXIT_CODE" >> "$GITHUB_OUTPUT"
       - name: Create PR
         run: |
           git config user.name opentelemetrybot
           git config user.email 107717825+opentelemetrybot@users.noreply.github.com
           npm run github:create_release_pr
+        if: ${{ steps.determine-pr-status.outputs.pr-missing == 1 }}
         env:
           GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
           #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
