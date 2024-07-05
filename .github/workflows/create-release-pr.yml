@@ -27,8 +27,9 @@ jobs:
           repository: marcpichler/test-release-pr #later opentelemetrybot/opentelemetry-js
           ref: main
       - name: Sync with upstream
+        # later https://github.com/open-telemetry/opentelemetry-js.git
         run: |
-          git remote add upstream https://github.com/open-telemetry/opentelemetry-js.git
+          git remote add upstream https://github.com/pichlermarc-sample-organization/test-release-pr/ 
           git fetch upstream main
           git reset --hard origin/main
           git push origin main --force
