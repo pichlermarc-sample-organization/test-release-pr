@@ -23,6 +23,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with: 
+          repository: marcpichler/test-release-pr #later opentelemetrybot/opentelemetry-js
+          ref: main
+      - name: Sync with upstream
+        run: |
+          git remote add upstream https://github.com/open-telemetry/opentelemetry-js.git
+          git fetch upstream main
+          git reset --hard origin/main
+          git push origin main --force
 
       - uses: actions/setup-node@v4
         with:
@@ -43,9 +52,9 @@ jobs:
           git config user.email 107717825+opentelemetrybot@users.noreply.github.com
           npm run github:create_release_pr
         env:
-          #GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_SCOPE: ${{ github.event.inputs.release_scope }}
           RELEASE_KIND: ${{ github.event.inputs.release_scope }}:${{ github.event.inputs.release_type }}
-          RELEASE_PR_REMOTE: opentelemetrybot
-          RELEASE_PR_OWNER: pichlermarc-sample-organization # opentelemetrybot
+          RELEASE_PR_REMOTE: origin
+          RELEASE_PR_OWNER: marcpichler # opentelemetrybot
