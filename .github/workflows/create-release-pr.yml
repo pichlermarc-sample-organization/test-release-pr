@@ -51,7 +51,7 @@ jobs:
         id: determine-pr-status
       # later open-telemetry/opentelemetry-js
         run: |
-          gh pr view --repo pichlermarc-sample-organization/test-release-pr $RELEASE_PR_OWNER:release/next-version2 || EXIT_CODE=$?
+          gh pr view --repo pichlermarc-sample-organization/test-release-pr $RELEASE_PR_OWNER:release/next-version || EXIT_CODE=$?
           echo "pr-missing=$EXIT_CODE" >> "$GITHUB_OUTPUT"
       - name: Create PR
         run: |
