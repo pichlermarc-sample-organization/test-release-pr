@@ -26,6 +26,7 @@ jobs:
         with: 
           repository: marcpichler/test-release-pr #later opentelemetrybot/opentelemetry-js
           ref: main
+          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
       - name: Sync with upstream
         # later https://github.com/open-telemetry/opentelemetry-js.git
         run: |
