@@ -1,6 +1,6 @@
 {
   "name": "@opentelemetry/sdk-events",
-  "version": "0.52.1",
+  "version": "0.53.0",
   "publishConfig": {
     "access": "public"
   },
@@ -65,11 +65,11 @@
   ],
   "sideEffects": false,
   "peerDependencies": {
-    "@opentelemetry/api": ">=1.4.0 <1.10.0"
+    "@opentelemetry/api": ">=1.4.0 <1.11.0"
   },
   "devDependencies": {
     "@babel/core": "7.24.7",
-    "@opentelemetry/api": "1.9.0",
+    "@opentelemetry/api": "1.10.0",
     "@opentelemetry/api-events": "0.52.0",
     "@opentelemetry/api-logs": "0.52.0",
     "@types/mocha": "10.0.6",
@@ -98,8 +98,8 @@
     "webpack-merge": "5.10.0"
   },
   "dependencies": {
-    "@opentelemetry/api-events": "0.52.1",
-    "@opentelemetry/api-logs": "0.52.1",
-    "@opentelemetry/sdk-logs": "0.52.1"
+    "@opentelemetry/api-events": "0.53.0",
+    "@opentelemetry/api-logs": "0.53.0",
+    "@opentelemetry/sdk-logs": "0.53.0"
   }
 }

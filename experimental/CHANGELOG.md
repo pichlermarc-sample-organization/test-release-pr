@@ -15,6 +15,8 @@ All notable changes to experimental packages in this project will be documented 
 
 ### :house: (Internal)
 
+## 0.53.0
+
 ## 0.52.1
 
 ### :rocket: (Enhancement)

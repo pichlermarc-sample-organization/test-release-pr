@@ -18,6 +18,8 @@ For experimental package changes, see the [experimental CHANGELOG](experimental/
 
 ### :house: (Internal)
 
+## 1.26.0
+
 ## 1.25.1
 
 ### :books: (Refine Doc)
