@@ -32,7 +32,8 @@ jobs:
         run: |
           git remote show origin
           git remote add upstream https://github.com/pichlermarc-sample-organization/test-release-pr.git
-          git pull upstream main
+          git fetch upstream
+          git reset --hard upstream/main
           git push origin main --force
 
       - uses: actions/setup-node@v4
@@ -41,30 +42,18 @@ jobs:
           cache-dependency-path: |
             package-lock.json
           node-version: 22
-
       - run: npm install -g npm@latest
+
       - name: Bootstrap
         run: npm ci
-      - name: Build 🔧
-        run: npm run compile
-#      - name: Determine PR Status
-#        id: determine-pr-status
-#      # later open-telemetry/opentelemetry-js
-#        run: |
-#          gh pr view --repo pichlermarc-sample-organization/test-release-pr $RELEASE_PR_OWNER:release/next-version || EXIT_CODE=$?
-#          echo "pr-missing=$EXIT_CODE" >> "$GITHUB_OUTPUT"
-#        env:
-#          GH_TOKEN: ${{ github.token }}
-#          RELEASE_PR_OWNER: marcpichler # opentelemetrybot
+
       - name: Create/Update Release PR
         run: |
           git config user.name opentelemetrybot
           git config user.email 107717825+opentelemetrybot@users.noreply.github.com
           npm run github:create_or_update_release_pr
-        # if: ${{ steps.determine-pr-status.outputs.pr-missing == 1 }}
         env:
           GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_SCOPE: ${{ github.event.inputs.release_scope }}
           RELEASE_KIND: ${{ github.event.inputs.release_scope }}:${{ github.event.inputs.release_type }}
           RELEASE_PR_REMOTE: origin
