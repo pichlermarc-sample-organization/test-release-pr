@@ -1,6 +1,6 @@
 {
   "name": "@opentelemetry/exporter-logs-otlp-http",
-  "version": "0.52.1",
+  "version": "0.52.2",
   "publishConfig": {
     "access": "public"
   },
@@ -105,10 +105,10 @@
     "@opentelemetry/api": "^1.0.0"
   },
   "dependencies": {
-    "@opentelemetry/api-logs": "0.52.1",
+    "@opentelemetry/api-logs": "0.52.2",
     "@opentelemetry/core": "1.25.1",
-    "@opentelemetry/otlp-exporter-base": "0.52.1",
-    "@opentelemetry/otlp-transformer": "0.52.1",
-    "@opentelemetry/sdk-logs": "0.52.1"
+    "@opentelemetry/otlp-exporter-base": "0.52.2",
+    "@opentelemetry/otlp-transformer": "0.52.2",
+    "@opentelemetry/sdk-logs": "0.52.2"
   }
 }
