@@ -29,9 +29,9 @@ jobs:
       - name: Sync with upstream
         # later https://github.com/open-telemetry/opentelemetry-js.git
         run: |
-          git remote add upstream https://github.com/pichlermarc-sample-organization/test-release-pr/ 
-          git fetch upstream main
-          git reset --hard origin/main
+          git remote show origin
+          git remote add upstream https://github.com/pichlermarc-sample-organization/test-release-pr.git
+          git pull upstream main
           git push origin main --force
 
       - uses: actions/setup-node@v4
@@ -48,7 +48,6 @@ jobs:
         run: npm run compile
       - name: Create PR
         run: |
-          git remote add $RELEASE_PR_REMOTE https://github.com/pichlermarc-sample-organization/test-release-pr.git
           git config user.name opentelemetrybot
           git config user.email 107717825+opentelemetrybot@users.noreply.github.com
           npm run github:create_release_pr
