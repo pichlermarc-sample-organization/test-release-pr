@@ -22,19 +22,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Fork
-        run: gh repo fork open-telemetry/opentelemetry-js
+        run: gh repo fork pichlermarc-sample-organization/test-release-pr
         env:
           GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          repository: opentelemetrybot/opentelemetry-js
+          repository: marcpichler/test-release-pr #later opentelemetrybot/opentelemetry-js
           ref: main
           token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
       - name: Sync with upstream
         run: |
           git remote show origin
-          git remote add upstream https://github.com/open-telemetry/opentelemetry-js.git
+          git remote add upstream https://github.com/pichlermarc-sample-organization/test-release-pr.git
           git fetch upstream
           git reset --hard upstream/main
           git push origin main --force
@@ -58,4 +58,4 @@ jobs:
           RELEASE_SCOPE: ${{ github.event.inputs.release_scope }}
           RELEASE_KIND: ${{ github.event.inputs.release_scope }}:${{ github.event.inputs.release_type }}
           RELEASE_PR_REMOTE: origin
-          RELEASE_PR_OWNER: opentelemetrybot
+          RELEASE_PR_OWNER: marcpichler # opentelemetrybot
