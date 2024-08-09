@@ -1,7 +1,7 @@
 {
   "name": "web-opentelemetry-example",
   "private": true,
-  "version": "0.52.1",
+  "version": "0.53.0",
   "description": "Example of using @opentelemetry/sdk-trace-web and @opentelemetry/sdk-metrics in browser",
   "main": "index.js",
   "scripts": {
