@@ -16,7 +16,7 @@ function extractLatestChangelog(changelogPath) {
   const changelog = fs.readFileSync(changelogPath).toString();
   // Matches everything from the first entry at h2 ('##') followed by a space and a non-prerelease semver version
   // until the next entry at h2.
-  const firstReleaseNoteEntryExp = /^## \d+\.\d+\.\d\n.*?(?=^## )/ms;
+  const firstReleaseNoteEntryExp = /^## \d+\.\d+\.\d\n.*?((?=^## )|$(?![\r\n]))/ms;
 
   return changelog.match(firstReleaseNoteEntryExp)[0];
 }
