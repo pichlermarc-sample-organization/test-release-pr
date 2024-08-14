@@ -4,7 +4,10 @@
     "outDir": "build",
     "rootDir": "."
   },
-  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts"
+  ],
   "references": [
     {
       "path": "../../../api"
@@ -22,7 +25,7 @@
       "path": "../../../packages/opentelemetry-sdk-trace-node"
     },
     {
-      "path": "../../../packages/semantic-conventions"
+      "path": "../../../packages/opentelemetry-semantic-conventions"
     },
     {
       "path": "../../../packages/sdk-metrics"

@@ -21,8 +21,6 @@ import { SpanKind } from './span_kind';
 
 /**
  * Options needed for span creation
- *
- * @since 1.0.0
  */
 export interface SpanOptions {
   /**

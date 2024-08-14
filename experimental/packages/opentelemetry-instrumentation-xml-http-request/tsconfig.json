@@ -5,7 +5,10 @@
     "rootDir": "."
   },
   "files": [],
-  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts"
+  ],
   "references": [
     {
       "path": "../../../api"
@@ -26,7 +29,7 @@
       "path": "../../../packages/opentelemetry-sdk-trace-web"
     },
     {
-      "path": "../../../packages/semantic-conventions"
+      "path": "../../../packages/opentelemetry-semantic-conventions"
     },
     {
       "path": "../opentelemetry-instrumentation"

@@ -17,11 +17,9 @@
 import * as sinon from 'sinon';
 import * as assert from 'assert';
 import { IExporterTransport } from '../../src';
-import { createRetryingTransport } from '../../src/retrying-transport';
+import { createRetryingTransport } from '../../src/retryable-transport';
 import { ExportResponse } from '../../src';
 import { assertRejects } from '../testHelper';
-
-const timeoutMillis = 1000000;
 
 describe('RetryingTransport', function () {
   describe('send', function () {
@@ -41,14 +39,10 @@ describe('RetryingTransport', function () {
       const transport = createRetryingTransport({ transport: mockTransport });
 
       // act
-      const actualResponse = await transport.send(mockData, timeoutMillis);
+      const actualResponse = await transport.send(mockData);
 
       // assert
-      sinon.assert.calledOnceWithExactly(
-        transportStubs.send,
-        mockData,
-        timeoutMillis
-      );
+      sinon.assert.calledOnceWithExactly(transportStubs.send, mockData);
       assert.deepEqual(actualResponse, expectedResponse);
     });
 
@@ -69,14 +63,10 @@ describe('RetryingTransport', function () {
       const transport = createRetryingTransport({ transport: mockTransport });
 
       // act
-      const actualResponse = await transport.send(mockData, timeoutMillis);
+      const actualResponse = await transport.send(mockData);
 
       // assert
-      sinon.assert.calledOnceWithExactly(
-        transportStubs.send,
-        mockData,
-        timeoutMillis
-      );
+      sinon.assert.calledOnceWithExactly(transportStubs.send, mockData);
       assert.deepEqual(actualResponse, expectedResponse);
     });
 
@@ -94,14 +84,10 @@ describe('RetryingTransport', function () {
       const transport = createRetryingTransport({ transport: mockTransport });
 
       // act
-      await assertRejects(() => transport.send(mockData, timeoutMillis));
+      await assertRejects(() => transport.send(mockData));
 
       // assert
-      sinon.assert.calledOnceWithExactly(
-        transportStubs.send,
-        mockData,
-        timeoutMillis
-      );
+      sinon.assert.calledOnceWithExactly(transportStubs.send, mockData);
     });
 
     it('does retry when the underlying transport returns retryable', async function () {
@@ -127,19 +113,11 @@ describe('RetryingTransport', function () {
       const transport = createRetryingTransport({ transport: mockTransport });
 
       // act
-      const actualResponse = await transport.send(mockData, timeoutMillis);
+      const actualResponse = await transport.send(mockData);
 
       // assert
       sinon.assert.calledTwice(transportStubs.send);
-      sinon.assert.alwaysCalledWithMatch(
-        transportStubs.send,
-        mockData,
-        sinon.match.number.and(
-          sinon.match(value => {
-            return value <= timeoutMillis;
-          })
-        )
-      );
+      sinon.assert.alwaysCalledWithExactly(transportStubs.send, mockData);
       assert.deepEqual(actualResponse, successResponse);
     });
 
@@ -165,19 +143,11 @@ describe('RetryingTransport', function () {
       const transport = createRetryingTransport({ transport: mockTransport });
 
       // act
-      await assertRejects(() => transport.send(mockData, timeoutMillis));
+      await assertRejects(() => transport.send(mockData));
 
       // assert
       sinon.assert.calledTwice(transportStubs.send);
-      sinon.assert.alwaysCalledWithMatch(
-        transportStubs.send,
-        mockData,
-        sinon.match.number.and(
-          sinon.match(value => {
-            return value <= timeoutMillis;
-          })
-        )
-      );
+      sinon.assert.alwaysCalledWithExactly(transportStubs.send, mockData);
     });
 
     it('does retry 5 times, then resolves as retryable', async function () {
@@ -199,48 +169,11 @@ describe('RetryingTransport', function () {
       const transport = createRetryingTransport({ transport: mockTransport });
 
       // act
-      const result = await transport.send(mockData, timeoutMillis);
+      const result = await transport.send(mockData);
 
       // assert
       sinon.assert.callCount(transportStubs.send, 6); // 1 initial try and 5 retries
-      sinon.assert.alwaysCalledWithMatch(
-        transportStubs.send,
-        mockData,
-        sinon.match.number.and(
-          sinon.match(value => {
-            return value <= timeoutMillis;
-          })
-        )
-      );
-      assert.strictEqual(result, retryResponse);
-    });
-
-    it('does not retry when retryInMillis takes place after timeoutMillis', async function () {
-      // arrange
-      const retryResponse: ExportResponse = {
-        status: 'retryable',
-        retryInMillis: timeoutMillis + 100,
-      };
-
-      const mockData = Uint8Array.from([1, 2, 3]);
-
-      const transportStubs = {
-        send: sinon.stub().resolves(retryResponse),
-        shutdown: sinon.stub(),
-      };
-      const mockTransport = <IExporterTransport>transportStubs;
-      const transport = createRetryingTransport({ transport: mockTransport });
-
-      // act
-      const result = await transport.send(mockData, timeoutMillis);
-
-      // assert
-      // initial try, no retries.
-      sinon.assert.calledOnceWithExactly(
-        transportStubs.send,
-        mockData,
-        timeoutMillis
-      );
+      sinon.assert.alwaysCalledWithExactly(transportStubs.send, mockData);
       assert.strictEqual(result, retryResponse);
     });
   });

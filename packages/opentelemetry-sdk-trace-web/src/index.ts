@@ -14,56 +14,9 @@
  * limitations under the License.
  */
 
-export { WebTracerConfig, WebTracerProvider } from './WebTracerProvider';
-export { StackContextManager } from './StackContextManager';
-export { PerformanceTimingNames } from './enums/PerformanceTimingNames';
-export {
-  PerformanceEntries,
-  PerformanceLegacy,
-  PerformanceResourceTimingInfo,
-  PropagateTraceHeaderCorsUrls,
-} from './types';
-export {
-  URLLike,
-  addSpanNetworkEvent,
-  addSpanNetworkEvents,
-  getElementXPath,
-  getResource,
-  hasKey,
-  normalizeUrl,
-  parseUrl,
-  shouldPropagateTraceHeaders,
-  sortResources,
-} from './utils';
-export {
-  AlwaysOffSampler,
-  AlwaysOnSampler,
-  BasicTracerProvider,
-  BatchSpanProcessor,
-  BatchSpanProcessorBrowserConfig,
-  BufferConfig,
-  ConsoleSpanExporter,
-  EXPORTER_FACTORY,
-  ForceFlushState,
-  GeneralLimits,
-  IdGenerator,
-  InMemorySpanExporter,
-  NoopSpanProcessor,
-  ParentBasedSampler,
-  PROPAGATOR_FACTORY,
-  RandomIdGenerator,
-  ReadableSpan,
-  Sampler,
-  SamplingDecision,
-  SamplingResult,
-  SDKRegistrationConfig,
-  SimpleSpanProcessor,
-  Span,
-  SpanExporter,
-  SpanLimits,
-  SpanProcessor,
-  TimedEvent,
-  TraceIdRatioBasedSampler,
-  Tracer,
-  TracerConfig,
-} from '@opentelemetry/sdk-trace-base';
+export * from './WebTracerProvider';
+export * from './StackContextManager';
+export * from './enums/PerformanceTimingNames';
+export * from './types';
+export * from './utils';
+export * from '@opentelemetry/sdk-trace-base';

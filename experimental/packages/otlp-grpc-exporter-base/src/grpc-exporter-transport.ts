@@ -88,6 +88,7 @@ export interface GrpcExporterTransportParameters {
    */
   metadata: () => Metadata;
   compression: 'gzip' | 'none';
+  timeoutMillis: number;
 }
 
 export class GrpcExporterTransport implements IExporterTransport {
@@ -100,7 +101,7 @@ export class GrpcExporterTransport implements IExporterTransport {
     this._client?.close();
   }
 
-  send(data: Uint8Array, timeoutMillis: number): Promise<ExportResponse> {
+  send(data: Uint8Array): Promise<ExportResponse> {
     // We need to make a for gRPC
     const buffer = Buffer.from(data);
 
@@ -144,7 +145,9 @@ export class GrpcExporterTransport implements IExporterTransport {
     }
 
     return new Promise<ExportResponse>(resolve => {
-      const deadline = Date.now() + timeoutMillis;
+      // this will always be defined
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const deadline = Date.now() + this._parameters.timeoutMillis;
 
       // this should never happen
       if (this._metadata == null) {

@@ -14,5 +14,5 @@
  * limitations under the License.
  */
 
-export { BatchSpanProcessor } from './export/BatchSpanProcessor';
-export { RandomIdGenerator } from './RandomIdGenerator';
+export * from './export/BatchSpanProcessor';
+export * from './RandomIdGenerator';

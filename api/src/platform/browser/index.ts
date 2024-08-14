@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-export { _globalThis } from './globalThis';
+export * from './globalThis';

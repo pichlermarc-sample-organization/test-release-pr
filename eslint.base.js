@@ -55,7 +55,6 @@ module.exports = {
           }
         }],
         "@typescript-eslint/no-shadow": ["warn"],
-        "no-restricted-syntax": ["error", "ExportAllDeclaration"],
         "prefer-rest-params": "off",
       }
     },

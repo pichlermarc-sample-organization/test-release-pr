@@ -14,7 +14,4 @@
  * limitations under the License.
  */
 
-export {
-  AWSXRAY_TRACE_ID_HEADER,
-  AWSXRayPropagator,
-} from './AWSXRayPropagator';
+export * from './AWSXRayPropagator';

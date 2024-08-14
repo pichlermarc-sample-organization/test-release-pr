@@ -33,42 +33,24 @@ function getJitter() {
 class RetryingTransport implements IExporterTransport {
   constructor(private _transport: IExporterTransport) {}
 
-  private retry(
-    data: Uint8Array,
-    timeoutMillis: number,
-    inMillis: number
-  ): Promise<ExportResponse> {
+  private retry(data: Uint8Array, inMillis: number): Promise<ExportResponse> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this._transport.send(data, timeoutMillis).then(resolve, reject);
+        this._transport.send(data).then(resolve, reject);
       }, inMillis);
     });
   }
 
-  async send(data: Uint8Array, timeoutMillis: number): Promise<ExportResponse> {
-    const deadline = Date.now() + timeoutMillis;
-    let result = await this._transport.send(data, timeoutMillis);
+  async send(data: Uint8Array): Promise<ExportResponse> {
+    let result = await this._transport.send(data);
     let attempts = MAX_ATTEMPTS;
     let nextBackoff = INITIAL_BACKOFF;
 
     while (result.status === 'retryable' && attempts > 0) {
       attempts--;
-
-      // use maximum of computed backoff and 0 to avoid negative timeouts
-      const backoff = Math.max(
-        Math.min(nextBackoff, MAX_BACKOFF) + getJitter(),
-        0
-      );
+      const backoff = Math.min(nextBackoff, MAX_BACKOFF) + getJitter();
       nextBackoff = nextBackoff * BACKOFF_MULTIPLIER;
-      const retryInMillis = result.retryInMillis ?? backoff;
-
-      // return when expected retry time is after the export deadline.
-      const remainingTimeoutMillis = deadline - Date.now();
-      if (retryInMillis > remainingTimeoutMillis) {
-        return result;
-      }
-
-      result = await this.retry(data, remainingTimeoutMillis, retryInMillis);
+      result = await this.retry(data, result.retryInMillis ?? backoff);
     }
 
     return result;

@@ -22,11 +22,11 @@ export type sendWithHttp = (
   params: HttpRequestParameters,
   agent: http.Agent | https.Agent,
   data: Uint8Array,
-  onDone: (response: ExportResponse) => void,
-  timeoutMillis: number
+  onDone: (response: ExportResponse) => void
 ) => void;
 
 export interface HttpRequestParameters {
+  timeoutMillis: number;
   url: string;
   headers: Record<string, string>;
   compression: 'gzip' | 'none';

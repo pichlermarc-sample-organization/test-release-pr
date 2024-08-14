@@ -42,8 +42,6 @@ const NOOP_TEXT_MAP_PROPAGATOR = new NoopTextMapPropagator();
 
 /**
  * Singleton object which represents the entry point to the OpenTelemetry Propagation API
- *
- * @since 1.0.0
  */
 export class PropagationAPI {
   private static _instance?: PropagationAPI;
