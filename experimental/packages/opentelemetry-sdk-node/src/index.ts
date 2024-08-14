@@ -14,9 +14,6 @@
  * limitations under the License.
  */
 
-/* eslint no-restricted-syntax: ["warn", "ExportAllDeclaration"] --
- * TODO: Replace export * with named exports before next major version
- */
 export * as api from '@opentelemetry/api';
 export * as contextBase from '@opentelemetry/api';
 export * as core from '@opentelemetry/core';
@@ -25,5 +22,5 @@ export * as metrics from '@opentelemetry/sdk-metrics';
 export * as node from '@opentelemetry/sdk-trace-node';
 export * as resources from '@opentelemetry/resources';
 export * as tracing from '@opentelemetry/sdk-trace-base';
-export { LoggerProviderConfig, MeterProviderConfig, NodeSDK } from './sdk';
-export { NodeSDKConfiguration } from './types';
+export * from './sdk';
+export * from './types';

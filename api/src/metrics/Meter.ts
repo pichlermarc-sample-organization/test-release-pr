@@ -30,8 +30,6 @@ import {
 
 /**
  * An interface describes additional metadata of a meter.
- *
- * @since 1.3.0
  */
 export interface MeterOptions {
   /**
@@ -46,8 +44,6 @@ export interface MeterOptions {
  * {@link Metric}s are used for recording pre-defined aggregation (`Counter`),
  * or raw values (`Histogram`) in which the aggregation and attributes
  * for the exported metric are deferred.
- *
- * @since 1.3.0
  */
 export interface Meter {
   /**

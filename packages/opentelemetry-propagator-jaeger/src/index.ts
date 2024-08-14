@@ -14,8 +14,4 @@
  * limitations under the License.
  */
 
-export {
-  JaegerPropagator,
-  UBER_BAGGAGE_HEADER_PREFIX,
-  UBER_TRACE_ID_HEADER,
-} from './JaegerPropagator';
+export * from './JaegerPropagator';

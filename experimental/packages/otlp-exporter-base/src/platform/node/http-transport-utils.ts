@@ -40,8 +40,7 @@ export function sendWithHttp(
   params: HttpRequestParameters,
   agent: http.Agent | https.Agent,
   data: Uint8Array,
-  onDone: (response: ExportResponse) => void,
-  timeoutMillis: number
+  onDone: (response: ExportResponse) => void
 ): void {
   const parsedUrl = new URL(params.url);
   const nodeVersion = Number(process.versions.node.split('.')[0]);
@@ -87,7 +86,7 @@ export function sendWithHttp(
     });
   });
 
-  req.setTimeout(timeoutMillis, () => {
+  req.setTimeout(params.timeoutMillis, () => {
     req.destroy();
     onDone({
       status: 'failure',

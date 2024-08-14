@@ -15,36 +15,5 @@
  */
 
 export { NodeTracerConfig } from './config';
-export { NodeTracerProvider } from './NodeTracerProvider';
-export {
-  AlwaysOffSampler,
-  AlwaysOnSampler,
-  BasicTracerProvider,
-  BatchSpanProcessor,
-  BatchSpanProcessorBrowserConfig,
-  BufferConfig,
-  ConsoleSpanExporter,
-  EXPORTER_FACTORY,
-  ForceFlushState,
-  GeneralLimits,
-  IdGenerator,
-  InMemorySpanExporter,
-  NoopSpanProcessor,
-  ParentBasedSampler,
-  PROPAGATOR_FACTORY,
-  RandomIdGenerator,
-  ReadableSpan,
-  Sampler,
-  SamplingDecision,
-  SamplingResult,
-  SDKRegistrationConfig,
-  SimpleSpanProcessor,
-  Span,
-  SpanExporter,
-  SpanLimits,
-  SpanProcessor,
-  TimedEvent,
-  TraceIdRatioBasedSampler,
-  Tracer,
-  TracerConfig,
-} from '@opentelemetry/sdk-trace-base';
+export * from './NodeTracerProvider';
+export * from '@opentelemetry/sdk-trace-base';

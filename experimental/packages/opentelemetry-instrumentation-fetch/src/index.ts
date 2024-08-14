@@ -14,8 +14,4 @@
  * limitations under the License.
  */
 
-export {
-  FetchCustomAttributeFunction,
-  FetchInstrumentation,
-  FetchInstrumentationConfig,
-} from './fetch';
+export * from './fetch';

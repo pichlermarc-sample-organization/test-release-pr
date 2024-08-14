@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-export { prepareSend } from './platform';
+export * from './platform';
 export { ExporterConfig } from './types';
-export { ZipkinExporter } from './zipkin';
+export * from './zipkin';

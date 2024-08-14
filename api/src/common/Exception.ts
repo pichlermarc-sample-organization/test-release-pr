@@ -39,8 +39,6 @@ interface ExceptionWithName {
  * Defines Exception.
  *
  * string or an object with one of (message or name or code) and optional stack
- *
- * @since 1.0.0
  */
 export type Exception =
   | ExceptionWithCode
