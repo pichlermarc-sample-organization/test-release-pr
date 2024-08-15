@@ -10,9 +10,9 @@ We aim to eventually automate this process as much as possible.
 3. For `Release Type`, select if you want to create a release PR for a new `minor` or `patch` version.
 4. For `Release Scope`, select if you want to release
    - `experimental` (all packages under `./experimental/packages`)
-   - `sdk` (all packages under `./packages/` except for `semantic-conventions`, and `./experimental/packages`)
+   - `sdk` (all packages under `./packages/` and `./experimental/packages`)
    - `semconv` (all packages under `./semantic-conventions`)
-   - `all` (all packages under `./api/`, `./packages/` and `./experimental/packages` except for `semantic-conventions`)
+   - `all` (all packages under `./api/`, `./packages/` and `./experimental/packages`, excludes `semantic-conventions`)
 
 > [!TIP]
 > If there was a commit to `main`, after PR creation simply run the workflow again before merging it.

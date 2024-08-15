@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 
 For API changes, see the [API CHANGELOG](api/CHANGELOG.md).
 For experimental package changes, see the [experimental CHANGELOG](experimental/CHANGELOG.md).
-For semantic convention package changes, see the [semconv CHANGELOG](packages/opentelemetry-semantic-conventions/CHANGELOG.md).
+For semantic convention package changes, see the [semconv CHANGELOG](packages/semantic-conventions/CHANGELOG.md).
 
 ## Unreleased
 
@@ -17,7 +17,7 @@ For semantic convention package changes, see the [semconv CHANGELOG](packages/op
 * feat(semconv): update semantic conventions to 1.27 (from 1.7.0) [#4690](https://github.com/open-telemetry/opentelemetry-js/pull/4690) @dyladan
   * Exported names have changed to `ATTR_{name}` for attributes (e.g. `ATTR_HTTP_REQUEST_METHOD`), `{name}_VALUE_{value}` for enumeration values (e.g. `HTTP_REQUEST_METHOD_VALUE_POST`), and `METRIC_{name}` for metrics. Exported names from previous versions are deprecated.
   * Import `@opentelemetry/semantic-conventions` for *stable* semantic conventions. Import `@opentelemetry/semantic-conventions/incubating` for all semantic conventions, stable and unstable.
-  * Note: Semantic conventions are now versioned separately from other stable artifacts, to correspond to the version of semantic conventions they provide.
+  * Note: Semantic conventions are now versioned separately from other stable artifacts, to correspond to the version of semantic conventions they provide. Changes will be in a separate changelog.
 
 ### :bug: (Bug Fix)
 
@@ -29,6 +29,20 @@ For semantic convention package changes, see the [semconv CHANGELOG](packages/op
 ### :house: (Internal)
 
 * refactor: Simplify the code for the `getEnv` function [#4799](https://github.com/open-telemetry/opentelemetry-js/pull/4799) @danstarns
+* refactor: remove "export *" in favor of explicit named exports [#4880](https://github.com/open-telemetry/opentelemetry-js/pull/4880) @robbkidd
+  * Packages updated:
+    * opentelemetry-context-zone
+    * opentelemetry-core
+    * opentelemetry-exporter-jaeger
+    * opentelemetry-exporter-zipkin
+    * opentelemetry-propagator-b3
+    * opentelemetry-propagator-jaeger
+    * opentelemetry-sdk-trace-base
+    * opentelemetry-sdk-trace-node
+    * opentelemetry-sdk-trace-web
+    * propagator-aws-xray
+    * sdk-metrics
+* deps(sdk-metrics): remove unused lodash.merge dependency [#4905](https://github.com/open-telemetry/opentelemetry-js/pull/4905) @pichlermarc
 
 ## 1.25.1
 
