@@ -46,7 +46,7 @@
       "packages/opentelemetry-shim-opentracing",
       "packages/propagator-aws-xray",
       "packages/sdk-metrics",
-      "packages/semantic-conventions"
+      "semantic-conventions"
     ],
     "out": "docs",
     "exclude": [
@@ -186,7 +186,7 @@
       "path": "packages/sdk-metrics"
     },
     {
-      "path": "packages/semantic-conventions"
+      "path": "semantic-conventions"
     },
     {
       "path": "packages/template"

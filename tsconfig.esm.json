@@ -90,7 +90,7 @@
       "path": "packages/sdk-metrics/tsconfig.esm.json"
     },
     {
-      "path": "packages/semantic-conventions/tsconfig.esm.json"
+      "path": "semantic-conventions/tsconfig.esm.json"
     }
   ]
 }
