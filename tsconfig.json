@@ -186,10 +186,10 @@
       "path": "packages/sdk-metrics"
     },
     {
-      "path": "semantic-conventions"
+      "path": "packages/template"
     },
     {
-      "path": "packages/template"
+      "path": "semantic-conventions"
     }
   ]
 }

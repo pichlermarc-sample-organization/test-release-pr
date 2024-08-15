@@ -13,7 +13,7 @@
       "path": "../../api"
     },
     {
-      "path": "../semantic-conventions"
+      "path": "../../semantic-conventions"
     }
   ]
 }
