@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          repository: opentelemetrybot/opentelemetry-js-contrib
+          repository: marcpichler/opentelemetry-js-contrib
           ref: main
           token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
       - name: Sync with upstream
